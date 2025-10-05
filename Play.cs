@@ -6,16 +6,17 @@
         string? playerName = ReadLine();
         WriteLine($"Welcome to the Mathgame, {playerName}!\n");
 
-        Write("Choose an operator for the game between: \nA - '+' \nS - '-' \nM - 'x' \nD - ':' \ne - exit game");
+        Write("Choose an operator for the game between: \nA - '+' \nS - '-' \nM - 'x' \nD - ':' \ne - exit game\n");
+        WriteLine();
         string? Input_game = ReadLine();
         switch (Input_game)
         {
             case "A":
                 WriteLine("You chose Addition!");
                 Addition addition = new Addition();
-                addition.StartAdditionGame(playerName);
+                addition.StartAdditionGame();
                 break;
-            case "S":
+            /*case "S":
                 WriteLine("You chose Subtraction!");
                 Subtraction subtraction = new Subtraction();
                 subtraction.StartSubtractionGame(playerName);
@@ -29,7 +30,7 @@
                 WriteLine("You chose Division!");
                 Division division = new Division();
                 division.StartDivisionGame(playerName);
-                break;
+                break;*/
             case "e":
                 WriteLine("Exiting the game. Goodbye!");
                 Welcome back_game = new Welcome();
