@@ -32,6 +32,8 @@
                 break;
             case "e":
                 WriteLine("Exiting the game. Goodbye!");
+                Welcome back_game = new Welcome();
+                back_game.StartWelcome();
                 break;
             default:
                 WriteLine("Invalid choice. Please select a valid operator.");
