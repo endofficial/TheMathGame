@@ -1,5 +1,5 @@
-﻿WriteLine("Welcome to Mathgame!");
-WriteLine("P - PLAY \nC - CHRONOLOGY \nQ - QUIT\n");
+﻿Welcome welcome = new Welcome();
+welcome.StartWelcome();
 
 string? input_1 = ReadLine();
 switch (input_1)
