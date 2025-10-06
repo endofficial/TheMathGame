@@ -44,6 +44,7 @@ public class Addition
     public void StartAdditionGame()
     {
         WriteLine("Starting Addition Game!\n");
+        int score = 0;
 
         for (int i = 0; i < _operations.Count; i++)
         {
@@ -57,15 +58,33 @@ public class Addition
                     if (resAnswer == currentOp.Result)
                     {
                         WriteLine("Correct! +3 points");
+                        score += 3;
                     }
                     else
                     {
                         WriteLine($"Incorrect! The correct answer is {currentOp.Result}. -2 point");
+                        score -= 2;
                     }
                 }
                 break; // Esco dal ciclo while per passare alla prossima operazione
             }
         }
-
+        WriteLine("\ne - exit game\nC - continue");
+        string? exit_addition = ReadLine();
+        switch (exit_addition)
+        {
+            case "e":
+                WriteLine("Exiting the game. Goodbye!\n");
+                Welcome back_game = new Welcome();
+                back_game.StartWelcome();
+                break;
+            case "C" or "c":
+                WriteLine("\nContinuing the game!\n");
+                _operations.Clear(); // Pulisce la lista delle operazioni
+                GenerateOperationRandom(3); // Genera altre 3 operazioni
+                StartAdditionGame(); // Richiama il metodo per continuare il gioco
+                break;
+        }
+     
     }
 }
