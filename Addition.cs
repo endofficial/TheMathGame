@@ -71,7 +71,7 @@ public class Addition
         }
 
         bool stayInMenu = true;
-        do
+        do //aggiungo un ciclo do-while per rimanere nel menu finchè non scelgo di uscire o continuare
         {
             WriteLine("\ne - exit game\nC - continue\nS - score\n");
             string? exit_addition = ReadLine();
