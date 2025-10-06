@@ -11,22 +11,22 @@
         string? Input_game = ReadLine();
         switch (Input_game)
         {
-            case "A":
+            case "A" or "a":
                 WriteLine("\nYou chose Addition!");
                 Addition addition = new Addition();
                 addition.StartAdditionGame();
                 break;
-            /*case "S":
+            /*case "S" or "s":
                 WriteLine("You chose Subtraction!");
                 Subtraction subtraction = new Subtraction();
                 subtraction.StartSubtractionGame(playerName);
                 break;
-            case "M":
+            case "M" or "m":
                 WriteLine("You chose Multiplication!");
                 Multiplication multiplication = new Multiplication();
                 multiplication.StartMultiplicationGame(playerName);
                 break;
-            case "D":
+            case "D" or "d":
                 WriteLine("You chose Division!");
                 Division division = new Division();
                 division.StartDivisionGame(playerName);
