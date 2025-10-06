@@ -35,8 +35,8 @@ public class Addition
     {
         for (int i = 0; i < count; i++)
         {
-            int n1 = _random.Next(1, 1001); // Numeri tra 1 e 1000
-            int n2 = _random.Next(1, 1001);
+            int n1 = _random.Next(1, 101); // Numeri tra 1 e 1000
+            int n2 = _random.Next(1, 101);
             _operations.Add(new Operation(n1, n2));
         }
     }
