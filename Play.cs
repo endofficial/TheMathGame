@@ -2,7 +2,7 @@
 {
     public void PlayGame()
     {
-        Write("Enter your name: ");
+        Write("\nEnter your name: ");
         string? playerName = ReadLine();
         WriteLine($"Welcome to the Mathgame, {playerName}!\n");
 
@@ -12,7 +12,7 @@
         switch (Input_game)
         {
             case "A":
-                WriteLine("You chose Addition!");
+                WriteLine("\nYou chose Addition!");
                 Addition addition = new Addition();
                 addition.StartAdditionGame();
                 break;
