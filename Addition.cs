@@ -43,14 +43,28 @@ public class Addition
 
     public void StartAdditionGame()
     {
-        WriteLine("Starting Addition Game!");
+        WriteLine("Starting Addition Game!\n");
 
         for (int i = 0; i < _operations.Count; i++)
         {
             Operation currentOp = _operations[i]; // Prendo l'operazione corrente
 
-            WriteLine($"Operation {i + 1}: {currentOp} Enter your answer: ");
-
+            while (true)
+            {
+                Write($"Operation {i + 1}: {currentOp} Enter your answer: ");
+                if (int.TryParse(ReadLine(), out int resAnswer))
+                {
+                    if (resAnswer == currentOp.Result)
+                    {
+                        WriteLine("Correct! +3 points");
+                    }
+                    else
+                    {
+                        WriteLine($"Incorrect! The correct answer is {currentOp.Result}. -2 point");
+                    }
+                }
+                break; // Esco dal ciclo while per passare alla prossima operazione
+            }
         }
 
     }
