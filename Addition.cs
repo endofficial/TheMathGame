@@ -94,9 +94,21 @@ public class Addition
                     WriteLine($"\nYour score is: {score}\n");
                     WriteLine("b - back\n");
                     string? back_addition_score = ReadLine()?.ToLower();
-                    if (back_addition_score == "b")
+
+                    do
                     {
+                        if (back_addition_score == "b")
+                        {
+                            // Torna al menu principale del gioco
+                            // stayInMenu rimane true per rimanere nel ciclo do-while
+                        }
+                        else
+                        {
+                            WriteLine($"{back_addition_score} is invalid, you must enter b.\n");
+                            back_addition_score = ReadLine()?.ToLower(); // Chiede di nuovo l'input perché altrimenti rimane in un ciclo infinito
+                        }
                     }
+                    while (back_addition_score != "b"); // Continua a chiedere finché non viene inserito "b"s
                     break;
             }
         }
