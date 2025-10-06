@@ -69,7 +69,7 @@ public class Addition
                 break; // Esco dal ciclo while per passare alla prossima operazione
             }
         }
-        WriteLine("\ne - exit game\nC - continue");
+        WriteLine("\ne - exit game\nC - continue\nS - score\n");
         string? exit_addition = ReadLine();
         switch (exit_addition)
         {
@@ -84,6 +84,17 @@ public class Addition
                 GenerateOperationRandom(3); // Genera altre 3 operazioni
                 StartAdditionGame(); // Richiama il metodo per continuare il gioco
                 break;
+            /*case "S" or "s":
+                WriteLine($"\nYour score is: {score}\n");
+                WriteLine("e - exit game\n");
+                string? exit_addition_score = ReadLine();
+                if (exit_addition_score == "e")
+                {
+                    WriteLine("Exiting the game. Goodbye!\n");
+                    Welcome back_game_score = new Welcome();
+                    back_game_score.StartWelcome(); //devo cambiarlo, perché voglio tornare solo indietro e non all'inizio
+                }
+                break;*/
         }
      
     }
