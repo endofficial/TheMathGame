@@ -31,6 +31,7 @@ public class Addition
         GenerateOperationRandom(3); // Genera 3 operazioni iniziali
     }
 
+    int points = 0;
     private void GenerateOperationRandom(int count) //metodo privato che genera operazioni casuali
     {
         for (int i = 0; i < count; i++)
@@ -69,6 +70,7 @@ public class Addition
                 break; // Esco dal ciclo while per passare alla prossima operazione
             }
         }
+        points += score; // Aggiungo il punteggio ottenuto in questa sessione al punteggio totale
 
         bool stayInMenu = true;
         do //aggiungo un ciclo do-while per rimanere nel menu finchè non scelgo di uscire o continuare
@@ -91,7 +93,7 @@ public class Addition
                     stayInMenu = false; // Esco dal ciclo do-while
                     break;
                 case "S" or "s":
-                    WriteLine($"\nYour score is: {score}\n");
+                    WriteLine($"\nYour score is: {points}\n");
                     WriteLine("b - back\n");
                     string? back_addition_score = ReadLine()?.ToLower();
 
@@ -108,7 +110,7 @@ public class Addition
                             back_addition_score = ReadLine()?.ToLower(); // Chiede di nuovo l'input perché altrimenti rimane in un ciclo infinito
                         }
                     }
-                    while (back_addition_score != "b"); // Continua a chiedere finché non viene inserito "b"s
+                    while (back_addition_score != "b"); // Continua a chiedere finché non viene inserito "b"
                     break;
             }
         }
