@@ -19,6 +19,7 @@ public class Addition
             return $"{Number1} + {Number2} = ?";
         }
     }
+
     // Lista per tenere traccia delle operazioni
     private readonly List<Operation> _operations;
 
