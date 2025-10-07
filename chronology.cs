@@ -1,7 +1,8 @@
-﻿public class Chronology
+﻿public class Chronology : Addition
 {
     public void StartChronology()
     {
-        WriteLine("Open to chronology");
+        WriteLine("\nOpen to chronology\nYou games are:\n");
+        WriteLine($"Game played on: {GameTime}");
     }
 }
