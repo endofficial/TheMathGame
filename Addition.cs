@@ -31,7 +31,7 @@ public class Addition
         GenerateOperationRandom(3); // Genera 3 operazioni iniziali
     }
 
-    int points = 0;
+    int points = 0; // Variabile per tenere traccia del punteggio totale. La inizializzo qui per mantenerla tra le sessioni di gioco e non resettarla ogni volta che inizio il gioco
     private void GenerateOperationRandom(int count) //metodo privato che genera operazioni casuali
     {
         for (int i = 0; i < count; i++)
