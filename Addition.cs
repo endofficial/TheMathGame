@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-public class Addition : RegToChronology
+public class Addition : RegToChrono
 {
     private class Operation // Classe interna per rappresentare un'operazione di addizione
     {
@@ -46,7 +46,10 @@ public class Addition : RegToChronology
 
     public void StartAdditionGame()
     {
-        GameTime = DateTimeOffset.Now; // Aggiorno il tempo di gioco ogni volta che inizio una nuova sessione
+        DateTimeOffset GameTime = DateTimeOffset.Now; // Imposto l'ora di inizio del gioco
+        _games.Add(GameTime); // Aggiungo la data e l'ora del gioco alla lista
+
+
         WriteLine("Starting Addition Game!\n");
         int score = 0;
 

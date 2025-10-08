@@ -1,8 +1,10 @@
-﻿public class Chronology : Addition
+﻿public class Chronology : RegToChrono
 {
     public void StartChronology()
     {
-        WriteLine("\nOpen to chronology\nYou games are:\n");
-        WriteLine($"Game played on: {GameTime}");
+        WriteLine("\nOpen to chronology\n");
+        RegToChrono chrono = new RegToChrono();
+        chrono.GetChrono();
     }
+    
 }
