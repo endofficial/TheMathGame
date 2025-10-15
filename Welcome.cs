@@ -10,7 +10,6 @@
             try
             {
                 // Ciclo per permettere all'utente di scegliere più volte tra le opzioni finché non decide di uscire anche quando più avanti scegli4 'e' per uscire dal gioco
-
                 {
                     WriteLine("Welcome to Mathgame!");
                     WriteLine("P - PLAY \nC - CHRONOLOGY \nQ - QUIT\n");
