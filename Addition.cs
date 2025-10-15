@@ -62,9 +62,19 @@ public class Addition
 
             while (true)
             {
-                Write($"Operation {i + 1}: {currentOp} Enter your answer: ");
-                if (int.TryParse(ReadLine(), out int resAnswer))
+                try
                 {
+                    Write($"Operation {i + 1}: {currentOp} Enter your answer: ");
+                    string? answer = ReadLine();
+                    if (string.IsNullOrEmpty(answer))
+                    {
+                        throw new ArgumentException("Answer cannot be null.");
+                    }
+                    if (!int.TryParse(answer, out int resAnswer)) //il ! serve per negare il risultato. 
+                    {
+                        throw new ArgumentException("Invalid input. Please enter a valid integer.");
+                    }
+                   
                     if (resAnswer == currentOp.Result)
                     {
                         WriteLine("Correct! +3 points");
@@ -75,6 +85,11 @@ public class Addition
                         WriteLine($"Incorrect! The correct answer is {currentOp.Result}. -2 point");
                         score -= 2;
                     }
+                }
+                catch (ArgumentException ex)
+                {
+                    WriteLine($"\nERROR!: {ex.Message}\n");
+                    continue; // Torno all'inizio del ciclo while per chiedere nuovamente la risposta
                 }
                 break; // Esco dal ciclo while per passare alla prossima operazione
             }
