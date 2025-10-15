@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-public class Addition : RegToChrono
+public class Addition 
 {
     private class Operation // Classe interna per rappresentare un'operazione di addizione
     {
