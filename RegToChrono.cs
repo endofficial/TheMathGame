@@ -1,6 +1,7 @@
 ﻿public class RegToChrono 
 {
-    protected List<string> _games = new List<string>();
+    //lista privata per tenere traccia delle partite giocate; privata perchè non voglio che venga modificata dall'esterno
+    private List<string> _games = new List<string>();
 
     public void AddGame(string game_Time)
     {
