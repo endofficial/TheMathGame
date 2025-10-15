@@ -1,5 +1,11 @@
 ﻿public class Play
 {
+    // Composizione: Play "ha un" RegToChrono per registrare le partite giocate
+    private readonly RegToChrono _gState;
+    public Play(RegToChrono gState)
+    {
+        _gState = gState;
+    }
     public void PlayGame()
     {
         Write("\nEnter your name: ");
@@ -13,9 +19,9 @@
         {
             case "A" or "a":
                 WriteLine("\nYou chose Addition!");
-                Addition addition = new Addition();
+                Addition addition = new Addition(_gState); // Passo l'istanza di RegToChrono al costruttore di Addition
                 addition.StartAdditionGame();
-                break;
+                return; // Esco dal metodo per tornare al menu principale del gioco senza perdere lo stato del gioco
             /*case "S" or "s":
                 WriteLine("You chose Subtraction!");
                 Subtraction subtraction = new Subtraction();
@@ -32,10 +38,8 @@
                 division.StartDivisionGame(playerName);
                 break;*/
             case "e":
-                WriteLine("Exiting the game. Goodbye!");
-                Welcome back_game = new Welcome();
-                back_game.StartWelcome();
-                break;
+                WriteLine("\nExiting the game. Goodbye!\n");
+                return;
             default:
                 WriteLine("Invalid choice. Please select a valid operator.");
                 break;
