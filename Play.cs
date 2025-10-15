@@ -21,6 +21,16 @@
             Write("Choose an operator for the game between: \nA - '+' \nS - '-' \nM - 'x' \nD - ':' \ne - exit game\n");
             WriteLine();
             string? Input_game = ReadLine();
+            if (string.IsNullOrWhiteSpace(Input_game))
+            {
+                throw new ArgumentNullException("Input cannot be null or empty.");
+            }
+            char inputChar = Input_game[0]; // Prendo il primo carattere dell'input
+            char upperChar = char.ToUpper(inputChar); 
+            if (!(upperChar == 'A' || upperChar == 'S' || upperChar == 'M' || upperChar == 'D' || upperChar == 'E'))
+            {
+                throw new ArgumentException("Invalid input. Please enter 'A' for addition, 'S' for subtraction, 'M' for multiplication, 'D' for division, or 'e' to exit.");
+            }
             switch (Input_game)
             {
                 case "A" or "a":
@@ -52,6 +62,10 @@
             }
         }
         catch (ArgumentNullException ex)
+        {
+            WriteLine($"\nERROR!: {ex.Message}\n");
+        }
+        catch (ArgumentException ex)
         {
             WriteLine($"\nERROR!: {ex.Message}\n");
         }
