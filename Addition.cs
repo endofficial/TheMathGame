@@ -21,13 +21,16 @@ public class Addition : RegToChrono
     }
 
     // Lista per tenere traccia delle operazioni
-    private readonly List<Operation> _operations;
+    private readonly List<Operation> _operations = new List<Operation>();
 
     //Generatore di numeri casuali. Static per una migliore randomizzazione
     private static readonly Random _random = new Random();
 
-    public Addition() // Costruttore della classe Addition
+    private readonly RegToChrono _gState; //dichiaro solo il campo perchè lo inizializzo nel costruttore
+
+    public Addition(RegToChrono gState) // Costruttore della classe Addition
     {
+        _gState = gState; // Inizializzo il campo con l'istanza passata come parametro
         _operations = new List<Operation>(); // Inizializzo la lista delle operazioni. Potevo anche farlo direttamente nella dichiarazione
         GenerateOperationRandom(3); // Genera 3 operazioni iniziali
     }
@@ -42,13 +45,13 @@ public class Addition : RegToChrono
             int n2 = _random.Next(1, 101);
             _operations.Add(new Operation(n1, n2));
         }
-    }
+    }    
 
     public void StartAdditionGame()
     {
-        DateTimeOffset GameTime = DateTimeOffset.Now; // Imposto l'ora di inizio del gioco
-        _games.Add(GameTime); // Aggiungo la data e l'ora del gioco alla lista
-
+        string currentDate = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
+        _gState.AddGame(currentDate); // Aggiungo la data e l'ora del gioco alla lista
+        Chronology chronology = new Chronology(_gState);
 
         WriteLine("Starting Addition Game!\n");
         int score = 0;
@@ -86,11 +89,13 @@ public class Addition : RegToChrono
             switch (exit_addition)
             {
                 case "e":
-                    WriteLine("Exiting the game. Goodbye!\n");
-                    Welcome back_game = new Welcome();
-                    back_game.StartWelcome();
-                    stayInMenu = false; // Esco dal ciclo do-while
-                    break;
+                    WriteLine("\nExiting the game. Goodbye!\n");
+
+                    //in questo modo perdo lo stato del gioco perché creo una nuova istanza di Welcome
+                    /*Welcome back_game = new Welcome();
+                    back_game.StartWelcome();*/
+
+                    return; // Esco dal metodo per tornare al menu principale del gioco senza perdere lo stato del gioco
                 case "C" or "c":
                     WriteLine("\nContinuing the game!\n");
                     _operations.Clear(); // Pulisce la lista delle operazioni
