@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.Generic; // Per usare List<T>
 public class Addition 
 {
     private class Operation // Classe interna per rappresentare un'operazione di addizione
