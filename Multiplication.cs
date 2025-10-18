@@ -41,8 +41,8 @@ public class Multiplication
     {
         for (int i = 0; i < count; i++)
         {
-            int n1 = _random.Next(1, 101); // Numeri tra 1 e 1000
-            int n2 = _random.Next(1, 101);
+            int n1 = _random.Next(1, 11); // Numeri tra 1 e 1000
+            int n2 = _random.Next(1, 11);
             _operations.Add(new Operation(n1, n2));
         }
     }
@@ -104,11 +104,6 @@ public class Multiplication
             {
                 case "e":
                     WriteLine("\nExiting the game. Goodbye!\n");
-
-                    //in questo modo perdo lo stato del gioco perché creo una nuova istanza di Welcome
-                    /*Welcome back_game = new Welcome();
-                    back_game.StartWelcome();*/
-
                     return; // Esco dal metodo per tornare al menu principale del gioco senza perdere lo stato del gioco
                 case "C" or "c":
                     WriteLine("\nContinuing the game!\n");

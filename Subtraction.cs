@@ -99,11 +99,6 @@ public class Subtraction
             {
                 case "e":
                     WriteLine("\nExiting the game. Goodbye!\n");
-
-                    //in questo modo perdo lo stato del gioco perché creo una nuova istanza di Welcome
-                    /*Welcome back_game = new Welcome();
-                    back_game.StartWelcome();*/
-
                     return; // Esco dal metodo per tornare al menu principale del gioco senza perdere lo stato del gioco
                 case "C" or "c":
                     WriteLine("\nContinuing the game!\n");
