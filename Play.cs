@@ -55,12 +55,12 @@
                             Subtraction subtraction = new Subtraction(_gState);
                             subtraction.StartSubtractionGame();
                             break;
-                        /*case "M" or "m":
+                        case "M" or "m":
                             WriteLine("You chose Multiplication!");
-                            Multiplication multiplication = new Multiplication();
-                            multiplication.StartMultiplicationGame(playerName);
+                            Multiplication multiplication = new Multiplication(_gState);
+                            multiplication.StartMultiplicationGame();
                             break;
-                        case "D" or "d":
+                        /*case "D" or "d":
                             WriteLine("You chose Division!");
                             Division division = new Division();
                             division.StartDivisionGame(playerName);
