@@ -54,12 +54,12 @@
                             WriteLine("You chose Subtraction!");
                             Subtraction subtraction = new Subtraction(_gState);
                             subtraction.StartSubtractionGame();
-                            break;
+                            return;
                         case "M" or "m":
                             WriteLine("You chose Multiplication!");
                             Multiplication multiplication = new Multiplication(_gState);
                             multiplication.StartMultiplicationGame();
-                            break;
+                            return;
                         /*case "D" or "d":
                             WriteLine("You chose Division!");
                             Division division = new Division();
