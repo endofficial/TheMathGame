@@ -40,64 +40,100 @@ public class Subtraction
     }
 
     int points = 0;
-    
+
     public void StartSubtractionGame()
     {
         string currentDate = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-        _gState.AddGame(currentDate);
+        _gState.AddGame(currentDate); // Aggiungo la data e l'ora del gioco alla lista
         Chronology chronology = new Chronology(_gState);
+
         WriteLine("Starting Subtraction Game!\n");
         int score = 0;
+
         for (int i = 0; i < _operations.Count; i++)
         {
             Operation currentOp = _operations[i]; // Prendo l'operazione corrente
-            WriteLine($"Operation {i + 1}: {currentOp}"); // Mostro l'operazione
-            Write("Your answer: ");
-            string? input = ReadLine();
-            if (int.TryParse(input, out int userAnswer))
+
+            while (true)
             {
-                if (userAnswer == currentOp.Result)
+                try
                 {
-                    WriteLine("Correct!\n");
-                    score++;
+                    Write($"Operation {i + 1}: {currentOp} Enter your answer: ");
+                    string? answer = ReadLine();
+                    if (string.IsNullOrEmpty(answer))
+                    {
+                        throw new ArgumentException("Answer cannot be null.");
+                    }
+                    if (!int.TryParse(answer, out int resAnswer)) //il ! serve per negare il risultato. 
+                    {
+                        throw new ArgumentException("Invalid input. Please enter a valid integer.");
+                    }
+
+                    if (resAnswer == currentOp.Result)
+                    {
+                        WriteLine("Correct! +3 points");
+                        score += 3;
+                    }
+                    else
+                    {
+                        WriteLine($"Incorrect! The correct answer is {currentOp.Result}. -2 point");
+                        score -= 2;
+                    }
                 }
-                else
+                catch (ArgumentException ex)
                 {
-                    WriteLine($"Wrong! The correct answer is {currentOp.Result}\n");
+                    WriteLine($"\nERROR!: {ex.Message}\n");
+                    continue; // Torno all'inizio del ciclo while per chiedere nuovamente la risposta
                 }
-            }
-            else
-            {
-                WriteLine($"Invalid input! The correct answer is {currentOp.Result}\n");
+                break; // Esco dal ciclo while per passare alla prossima operazione
             }
         }
-        points += score;
-        WriteLine($"Game Over! You scored {score} out of {_operations.Count}.");
-        WriteLine($"Total Points: {points}\n");
-        while (true)
+        points += score; // Aggiungo il punteggio ottenuto in questa sessione al punteggio totale
+
+        bool stayInMenu = true;
+        do //aggiungo un ciclo do-while per rimanere nel menu finchè non scelgo di uscire o continuare
         {
-            Write("Do you want to play again? (y/n) or view chronology (c): ");
-            string? choice = ReadLine()?.ToLower();
-            if (choice == "y")
+            WriteLine("\ne - exit game\nC - continue\nS - score\n");
+            string? exit_addition = ReadLine();
+            switch (exit_addition)
             {
-                _operations.Clear();
-                GenerateOperationRandom(3);
-                StartSubtractionGame();
-                break;
-            }
-            else if (choice == "n")
-            {
-                WriteLine("Thanks for playing! Goodbye!");
-                break;
-            }
-            else if (choice == "c")
-            {
-                chronology.StartChronology();
-            }
-            else
-            {
-                WriteLine("Invalid choice. Please enter 'y', 'n', or 'c'.");
+                case "e":
+                    WriteLine("\nExiting the game. Goodbye!\n");
+
+                    //in questo modo perdo lo stato del gioco perché creo una nuova istanza di Welcome
+                    /*Welcome back_game = new Welcome();
+                    back_game.StartWelcome();*/
+
+                    return; // Esco dal metodo per tornare al menu principale del gioco senza perdere lo stato del gioco
+                case "C" or "c":
+                    WriteLine("\nContinuing the game!\n");
+                    _operations.Clear(); // Pulisce la lista delle operazioni
+                    GenerateOperationRandom(3); // Genera altre 3 operazioni
+                    StartSubtractionGame(); // Richiama il metodo per continuare il gioco
+                    stayInMenu = false; // Esco dal ciclo do-while
+                    break;
+                case "S" or "s":
+                    WriteLine($"\nYour score is: {points}\n");
+                    WriteLine("b - back\n");
+                    string? back_addition_score = ReadLine()?.ToLower();
+
+                    do
+                    {
+                        if (back_addition_score == "b")
+                        {
+                            // Torna al menu principale del gioco
+                            // stayInMenu rimane true per rimanere nel ciclo do-while
+                        }
+                        else
+                        {
+                            WriteLine($"{back_addition_score} is invalid, you must enter b.\n");
+                            back_addition_score = ReadLine()?.ToLower(); // Chiede di nuovo l'input perché altrimenti rimane in un ciclo infinito
+                        }
+                    }
+                    while (back_addition_score != "b"); // Continua a chiedere finché non viene inserito "b"
+                    break;
             }
         }
+        while (stayInMenu);
     }
 }
