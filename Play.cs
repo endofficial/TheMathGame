@@ -51,20 +51,20 @@
                             addition.StartAdditionGame();
                             return; // Esco dal metodo per tornare al menu principale del gioco senza perdere lo stato del gioco
                         case "S" or "s":
-                            WriteLine("You chose Subtraction!");
+                            WriteLine("\nYou chose Subtraction!");
                             Subtraction subtraction = new Subtraction(_gState);
                             subtraction.StartSubtractionGame();
                             return;
                         case "M" or "m":
-                            WriteLine("You chose Multiplication!");
+                            WriteLine("\nYou chose Multiplication!");
                             Multiplication multiplication = new Multiplication(_gState);
                             multiplication.StartMultiplicationGame();
                             return;
-                        /*case "D" or "d":
-                            WriteLine("You chose Division!");
-                            Division division = new Division();
-                            division.StartDivisionGame(playerName);
-                            break;*/
+                        case "D" or "d":
+                            WriteLine("\nYou chose Division!");
+                            Division division = new Division(_gState);
+                            division.StartDivisionGame();
+                            return;
                         case "e":
                             WriteLine("\nExiting the game. Goodbye!\n");
                             return;
