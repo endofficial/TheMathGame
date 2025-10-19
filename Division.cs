@@ -33,18 +33,18 @@ public class Division
     {
         _gState = gState; // Inizializzo il campo con l'istanza passata come parametro
         _operations = new List<Operation>(); // Inizializzo la lista delle operazioni. Potevo anche farlo direttamente nella dichiarazione
-        GenerateOperationRandom(3); // Genera 3 operazioni iniziali
+        GenerateOperationRandom(); // Genera 3 operazioni iniziali
     }
 
     int points = 0; // Variabile per tenere traccia del punteggio totale. La inizializzo qui per mantenerla tra le sessioni di gioco e non resettarla ogni volta che inizio il gioco
-    private void GenerateOperationRandom(int count) //metodo privato che genera operazioni casuali
+    private void GenerateOperationRandom() //metodo privato che genera operazioni casuali
     {
         int magazine = 0;
 
         while (magazine < 3)
         {
             int quotient = _random.Next(1, 11);
-            int divider = _random.Next(1, 101);
+            int divider = _random.Next(1, 11);
             int dividend = quotient * divider; // Calcolo il dividendo in modo che la divisione sia esatta
 
             if (dividend <= 100)
@@ -120,7 +120,7 @@ public class Division
                 case "C" or "c":
                     WriteLine("\nContinuing the game!\n");
                     _operations.Clear(); // Pulisce la lista delle operazioni
-                    GenerateOperationRandom(3); // Genera altre 3 operazioni
+                    GenerateOperationRandom(); // Genera altre 3 operazioni
                     StartDivisionGame(); // Richiama il metodo per continuare il gioco
                     stayInMenu = false; // Esco dal ciclo do-while
                     break;

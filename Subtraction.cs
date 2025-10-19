@@ -32,6 +32,7 @@ public class Subtraction
     }
 
     private readonly RegToChrono _gState;
+
     public Subtraction(RegToChrono gState)
     {
         _gState = gState;

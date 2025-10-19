@@ -1,4 +1,5 @@
-﻿public class Play
+﻿using System.Collections.Generic;
+public class Play 
 {
     // Composizione: Play "ha un" RegToChrono per registrare le partite giocate
     private readonly RegToChrono _gState;
@@ -20,6 +21,8 @@
                     throw new ArgumentNullException("Name cannot be null.");
                 }
                 WriteLine($"Welcome to the Mathgame, {playerName}!\n");
+                _gState.AddPlayer(playerName); // Aggiungo il nome del giocatore alla lista
+
             }
             catch (ArgumentNullException ex)
             {
@@ -76,14 +79,14 @@
                 catch (ArgumentNullException ex)
                 {
                     WriteLine($"\nERROR!: {ex.Message}\n");
-                    continue; 
+                    continue;
                 }
                 catch (ArgumentException ex)
                 {
                     WriteLine($"\nERROR!: {ex.Message}\n");
                     continue;
                 }
-            } 
+            }
         }     
     }         
 }
