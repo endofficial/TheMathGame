@@ -22,8 +22,6 @@
         player.Games.Add(new Games(DateTime.Now)); // Aggiungo una nuova partita con la data e l'ora corrente
         return player;
     }
-
-    
     
     public void GetChrono() //void perché non ritorna nulla, deve solo stampare
     {
@@ -37,11 +35,7 @@
         // Stampo il nome del giocatore e la lista delle partite giocate
         foreach (var playerX in _players)
         {
-            Write($"Player: {playerX.PlayerName}\n");
-            /*foreach (var game in playerX.Games)
-            {
-                WriteLine($"  Game Date: {game.Date}\n");
-            }*/
+            Write($"\nPlayer: {playerX.PlayerName}\n");
         }
         WriteLine("\n--- End of chronology ---\n");
     }
