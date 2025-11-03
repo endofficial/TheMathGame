@@ -61,7 +61,7 @@ public class Division
     public void StartDivisionGame()
     {
         string currentDate = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss");
-        _gState.AddGame(currentDate); // Aggiungo la data e l'ora del gioco alla lista
+        _gState.GetPlayerName(currentDate); // Aggiungo la data e l'ora del gioco alla lista
         Chronology chronology = new Chronology(_gState);
 
         WriteLine("Starting Division Game!\n");
