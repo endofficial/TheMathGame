@@ -16,12 +16,12 @@ public class Play
             {
                 Write("\nEnter your name: ");
                 string? playerName = ReadLine();
-                if (string.IsNullOrWhiteSpace(playerName))
+                if (string.IsNullOrWhiteSpace(playerName)) // Controllo se il nome è null o vuoto
                 {
                     throw new ArgumentNullException("Name cannot be null.");
                 }
                 WriteLine($"Welcome to the Mathgame, {playerName}!\n");
-                _gState.AddPlayer(playerName); // Aggiungo il nome del giocatore alla lista
+                _gState.GetPlayerName(playerName); // Aggiungo il nome del giocatore alla lista
 
             }
             catch (ArgumentNullException ex)

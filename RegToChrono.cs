@@ -11,7 +11,7 @@
     protected List<Players> _players = new List<Players>();
 
     //metodo per ottenere il giocatore in base al nome
-    public Players? GetPlayerName(string inputName)
+    public Players? GetPlayerName(string inputName) // serve per registrare una partita per un giocatore
     {
         var player = _players.Where(p => p.PlayerName == inputName).FirstOrDefault(); // Restituisco il primo giocatore che corrisponde al nome, o null se non trovato
         if (player is null)
