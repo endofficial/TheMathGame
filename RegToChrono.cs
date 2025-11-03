@@ -1,45 +1,47 @@
 ﻿public class RegToChrono
 {
-    /*private readonly Play _gPlayer;
-    public RegToChrono(Play gPlayer) // Costruttore che accetta un'istanza di Play
-    {
-        _gPlayer = gPlayer;
-    }*/
+    //voglio fare in modo che ogni giocatore abbia una lista di partite giocate, quindi devo cambiare codice rispetto a prima
+    public record Games (DateTime Date);
 
-    //lista privata per tenere traccia delle partite giocate; privata perchè non voglio che venga modificata dall'esterno
-    protected List<string> _games = new List<string>();
-    protected List<string> _gPlayer = new List<string>();
-
-    public void AddGame(string game_Time)
+    public record Players(string PlayerName)
     {
-        _games.Add(game_Time);
+        public List<Games> Games = new();
     }
 
-    public void AddPlayer(string player_Name)
+    protected List<Players> _players = new List<Players>();
+
+    //metodo per ottenere il giocatore in base al nome
+    public Players? GetPlayerName(string inputName)
     {
-        _gPlayer.Add(player_Name);
+        var player = _players.Where(p => p.PlayerName == inputName).FirstOrDefault(); // Restituisco il primo giocatore che corrisponde al nome, o null se non trovato
+        if (player is null)
+        {
+            player = new Players(inputName); // Creo un nuovo giocatore se non esiste
+            _players.Add(player); // Aggiungo il nuovo giocatore alla lista
+        }
+        player.Games.Add(new Games(DateTime.Now)); // Aggiungo una nuova partita con la data e l'ora corrente
+        return player;
     }
 
+    
+    
     public void GetChrono() //void perché non ritorna nulla, deve solo stampare
     {
         WriteLine("--- Games chronology ---\n");
-        if (_games.Count == 0)
+        if (_players.Count == 0)
         {
             WriteLine("\nNo games recorded!\n");
             return;
-        }
-
-        HashSet<string> uniquePlayers = new HashSet<string>(_gPlayer);
+        } 
 
         // Stampo il nome del giocatore e la lista delle partite giocate
-        foreach (var player in uniquePlayers)
+        foreach (var playerX in _players)
         {
-            Write($"Player: {player}\n");
-        }
-
-        foreach (var game in _games)
-        {
-            Write($"{game}\n");
+            Write($"Player: {playerX.PlayerName}\n");
+            /*foreach (var game in playerX.Games)
+            {
+                WriteLine($"  Game Date: {game.Date}\n");
+            }*/
         }
         WriteLine("\n--- End of chronology ---\n");
     }
