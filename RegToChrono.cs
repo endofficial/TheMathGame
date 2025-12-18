@@ -44,7 +44,7 @@
 
             foreach (var game in playerX.Games)
             {
-                WriteLine($" - Game played on: {game.Date}"); // Stampo la data della partita
+                WriteLine($" - {game.Date}"); // Stampo la data della partita
             }
         }
         WriteLine("\n--- End of chronology ---\n");
