@@ -13,6 +13,11 @@
     //metodo per ottenere il giocatore in base al nome
     public Players? GetPlayerName(string inputName) // serve per registrare una partita per un giocatore
     {
+        if (DateTime.TryParse(inputName, out _)) //il tryparse ritorna true se riesce a convertire la stringa in data, se è così da null
+        {
+            return null; // Se l'input è una data, ritorno null
+        }
+
         var player = _players.Where(p => p.PlayerName == inputName).FirstOrDefault(); // Restituisco il primo giocatore che corrisponde al nome, o null se non trovato
         if (player is null)
         {
@@ -30,12 +35,17 @@
         {
             WriteLine("\nNo games recorded!\n");
             return;
-        } 
+        }
 
         // Stampo il nome del giocatore e la lista delle partite giocate
         foreach (var playerX in _players)
         {
-            Write($"\nPlayer: {playerX.PlayerName}\n");
+            Write($"\nPlayer: {playerX.PlayerName}\n"); // Stampo il nome del giocatore
+
+            foreach (var game in playerX.Games)
+            {
+                WriteLine($" - Game played on: {game.Date}"); // Stampo la data della partita
+            }
         }
         WriteLine("\n--- End of chronology ---\n");
     }
