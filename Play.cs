@@ -38,14 +38,6 @@ public class Play
                     continue;
                 }
 
-                char inputChar = Input_game[0]; // Prendo il primo carattere dell'input
-                char upperChar = char.ToUpper(inputChar);
-                if (!(upperChar == 'A' || upperChar == 'S' || upperChar == 'M' || upperChar == 'D' || upperChar == 'E'))
-                {
-                   WriteLine("Invalid input. Please enter 'A' for addition, 'S' for subtraction, 'M' for multiplication, 'D' for division, or 'e' to exit.");
-                   continue;
-                }
-
                 switch (Input_game)
                 {
                     case "A" or "a":
